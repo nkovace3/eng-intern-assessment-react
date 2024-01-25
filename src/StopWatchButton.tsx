@@ -3,7 +3,12 @@ import ButtonGroup from '@mui/material-next/ButtonGroup';
 import Button from '@mui/material-next/Button';
 import './css/Button.css';
 
-export default function StopWatchButton() {
+interface StopWatchButtonProps {
+    onStart: () => void;
+    onStop: () => void;
+}
+
+export default function StopWatchButton({onStart, onStop}: StopWatchButtonProps) {
     return(
         <div  className = 'button-container'>
             <ButtonGroup
@@ -11,8 +16,8 @@ export default function StopWatchButton() {
                 size="large"
                 variant="elevated"
             >
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }}>Start</Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }}>Stop</Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48' }} onClick = {onStart}>Start</Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48' }} onClick = {onStop}>Stop</Button>
             <Button style={{ backgroundColor: 'white', color: '#96bf48' }}>Lap</Button>
             <Button style={{ backgroundColor: 'white', color: '#96bf48' }}>Reset</Button>
             </ButtonGroup>

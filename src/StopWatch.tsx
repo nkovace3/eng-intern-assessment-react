@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import './css/Time.css';
 
-const date = new Date();
-const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+interface StopWatchProps {
+  elapsedTime: number;
+}
 
+export default function StopWatch({elapsedTime}: StopWatchProps) {
+  const [formattedTime, setFormattedTime] = useState('00:00:00.000');
 
-export default function StopWatch() {
-    return(
-        <div>
-            <h1>{time}</h1>
-        </div>
-    )
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const date = new Date(elapsedTime);
+      setFormattedTime(
+          date.getUTCHours() + ':' +
+          (date.getUTCMinutes() < 10 ? '0' : '') + date.getUTCMinutes() + ':' +
+          (date.getUTCSeconds() < 10 ? '0' : '') + date.getUTCSeconds() + '.' +
+          (date.getUTCMilliseconds() < 10 ? '00' : date.getUTCMilliseconds() < 100 ? '0' : '') + date.getUTCMilliseconds()
+        );
+    }, 1);
+
+    return () => clearInterval(timer);
+  }, [elapsedTime]);
+
+  return (
+    <div className = 'time-container'>
+      <h1>{formattedTime}</h1>
+    </div>
+  );
 }

@@ -2,4 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Myriad Pro', sans-serif;
+                                                
 }
+
+.button {
+    background-color: white;
+    color: #96bf48;
+    font-family: 'Myriad Pro', sans-serif;                                         
+    font-size: 16px;
+    font-weight: bold;
+  }
