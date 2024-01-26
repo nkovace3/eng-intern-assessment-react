@@ -31,14 +31,21 @@ export default function App() {
     const handleStop = () => {
         setIsRunning(false);
         setIsPaused(true);
-    }
+    };
+
+    const handleReset = () => {
+        setIsRunning(false);
+        setElapsedTime(0);
+    };
 
     return(
-        <div>
+        <div className = 'main-container'>
+            <h1 className = 'header'>Shopify Technical Challenge</h1>
             <StopWatch elapsedTime = {elapsedTime}/>
             <StopWatchButton
                 onStart = {handleStart}
-                onStop = {handleStop} />
+                onStop = {handleStop} 
+                onReset = {handleReset}/>
         </div>
     )
 }
