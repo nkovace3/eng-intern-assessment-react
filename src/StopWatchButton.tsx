@@ -18,10 +18,10 @@ export default function StopWatchButton({onStart, onStop, onReset, onLap}: StopW
                 size="large"
                 variant="elevated"
             >
-            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onStart}><strong>Start</strong></Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onStop}><strong>Stop</strong></Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onLap}><strong>Lap</strong></Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onReset}><strong>Reset</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#000000', fontFamily: 'Myriad Pro' }} onClick = {onStart}><strong>Start</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#000000', fontFamily: 'Myriad Pro' }} onClick = {onStop}><strong>Stop</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#000000', fontFamily: 'Myriad Pro' }} onClick = {onLap}><strong>Lap</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#000000', fontFamily: 'Myriad Pro' }} onClick = {onReset}><strong>Reset</strong></Button>
             </ButtonGroup>
         </div>
     )

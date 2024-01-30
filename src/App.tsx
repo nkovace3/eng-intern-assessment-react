@@ -42,13 +42,16 @@ export default function App() {
     };
 
     const handleLap = () => {
-        const lapTime = laps.length === 0 ? elapsedTime : Date.now() - startTime;
-        setLaps((prevLaps) => [...prevLaps, lapTime]);
+        if(isRunning){
+            const lapTime = laps.length === 0 ? elapsedTime : Date.now() - startTime;
+            setLaps((prevLaps) => [...prevLaps, lapTime]);
+        }
     };
 
     return (
         <div className='main-container'>
             <h1 className='header' style={{ marginBottom: '0px' }}>Shopify Technical Challenge</h1>
+            <p><strong>By Nikola Kovacevic</strong></p>
             <StopWatch elapsedTime={elapsedTime} />
             <StopWatchButton
                 onStart={handleStart}

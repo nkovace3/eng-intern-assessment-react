@@ -24,9 +24,9 @@ const Laps: React.FC<LapsProps> = ({ laps }) => {
 
     return (
         <div className='lap-container'>
-            <ul className='laps' style={{ listStyleType: 'none' }}>
+            <ul className='laps' style={{ listStyleType: 'none', padding: '0', textAlign: 'center' }}>
                 {lapTimes.map((lap: number, index: number) => (
-                    <li key={index}>Lap {index + 1}: {formatTimeDifference(lap)}</li>
+                    <li key={index} style = {{margin: '8px 0', textAlign: 'center'}}>Lap {index + 1}: {formatTimeDifference(lap)}</li>
                 ))}
             </ul>
         </div>

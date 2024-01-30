@@ -8,7 +8,8 @@
 
 .button {
     background-color: white;
-    color: #96bf48;
+    /* color: #96bf48; */
+    color: #000000;
     font-family: 'Myriad Pro', sans-serif;                                         
     font-size: 16px;
     font-weight: bold;
