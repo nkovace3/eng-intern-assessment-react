@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
+// Interface defining the props for the Laps component
 interface LapsProps {
     laps: number[] | undefined;
 }
 
+// Functional component for displaying the recorded laps
 const Laps: React.FC<LapsProps> = ({ laps }) => {
+  // State to store calculated lap times
     const [lapTimes, setLapTimes] = useState<number[]>([]);
 
+    // useEffect hook to recalculate lap times whenever laps prop changes
     useEffect(() => {
         if (laps && laps.length > 0) {
-            // Calculate lap times
+            // Calculate lap times by subtracting consecutive lap timestamps
             const newLapTimes = [laps[0]];
             for (let i = 1; i < laps.length; i++) {
                 newLapTimes.push(laps[i] - laps[i - 1]);
@@ -18,10 +22,12 @@ const Laps: React.FC<LapsProps> = ({ laps }) => {
         }
     }, [laps]);
 
+    // If no laps or laps array is empty, return null (don't render anything)
     if (!laps || laps.length === 0) {
         return null;
     }
 
+    // Render the list of lap times
     return (
         <div className='lap-container'>
             <ul className='laps' style={{ listStyleType: 'none', padding: '0', textAlign: 'center' }}>
