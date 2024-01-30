@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import StopWatchButton from './StopWatchButton';
 import StopWatch from './StopWatch';
+import Laps from './Laps';
 
 export default function App() {
     const [isRunning, setIsRunning] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [startTime, setStartTime] = useState(0);
     const [elapsedTime, setElapsedTime] = useState(0);
+    const [laps, setLaps] = useState<number[]>([]);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
-        if(isRunning && !isPaused){
+        if (isRunning && !isPaused) {
             const calculatedStartTime = Date.now() - elapsedTime;
             setStartTime(calculatedStartTime);
             timer = setInterval(() => {
@@ -36,16 +38,24 @@ export default function App() {
     const handleReset = () => {
         setIsRunning(false);
         setElapsedTime(0);
+        setLaps([]);
     };
 
-    return(
-        <div className = 'main-container'>
-            <h1 className = 'header'>Shopify Technical Challenge</h1>
-            <StopWatch elapsedTime = {elapsedTime}/>
+    const handleLap = () => {
+        const lapTime = laps.length === 0 ? elapsedTime : Date.now() - startTime;
+        setLaps((prevLaps) => [...prevLaps, lapTime]);
+    };
+
+    return (
+        <div className='main-container'>
+            <h1 className='header' style={{ marginBottom: '0px' }}>Shopify Technical Challenge</h1>
+            <StopWatch elapsedTime={elapsedTime} />
             <StopWatchButton
-                onStart = {handleStart}
-                onStop = {handleStop} 
-                onReset = {handleReset}/>
+                onStart={handleStart}
+                onStop={handleStop}
+                onReset={handleReset}
+                onLap={handleLap} />
+            <Laps laps={laps} />
         </div>
-    )
+    );
 }

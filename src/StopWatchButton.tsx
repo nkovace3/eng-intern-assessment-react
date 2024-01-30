@@ -7,9 +7,10 @@ interface StopWatchButtonProps {
     onStart: () => void;
     onStop: () => void;
     onReset: () => void;
+    onLap: () => void;
 }
 
-export default function StopWatchButton({onStart, onStop, onReset}: StopWatchButtonProps) {
+export default function StopWatchButton({onStart, onStop, onReset, onLap}: StopWatchButtonProps) {
     return(
         <div  className = 'button-container'>
             <ButtonGroup
@@ -17,10 +18,10 @@ export default function StopWatchButton({onStart, onStop, onReset}: StopWatchBut
                 size="large"
                 variant="elevated"
             >
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }} onClick = {onStart}>Start</Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }} onClick = {onStop}>Stop</Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }}>Lap</Button>
-            <Button style={{ backgroundColor: 'white', color: '#96bf48' }} onClick = {onReset}>Reset</Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onStart}><strong>Start</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onStop}><strong>Stop</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onLap}><strong>Lap</strong></Button>
+            <Button style={{ backgroundColor: 'white', color: '#96bf48', fontFamily: 'Myriad Pro' }} onClick = {onReset}><strong>Reset</strong></Button>
             </ButtonGroup>
         </div>
     )
